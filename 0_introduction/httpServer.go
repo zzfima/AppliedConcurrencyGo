@@ -1,7 +1,7 @@
 package main
 
 import (
-	"log"
+	"fmt"
 	"net/http"
 )
 
@@ -11,5 +11,5 @@ func mainHTTPServer() {
 }
 
 func helloHandler(w http.ResponseWriter, r *http.Request) {
-	log.Println("hello")
+	fmt.Fprint(w, "Hello world")
 }
