@@ -1,3 +1,5 @@
+//see "7. Drink Web Shop Architecture.PNG"
+
 package main
 
 import (
@@ -19,7 +21,13 @@ func mainDrinkWebShop() {
 	http.ListenAndServe(":8080", router)
 }
 
-// Sent from postmnan as: localhost:8080/viewOrder?orderID=11
+func viewAllOrdersHandle(w http.ResponseWriter, r *http.Request) {
+	for id, item := range orders {
+		fmt.Fprintf(w, "%d is %s\n", id, item)
+	}
+}
+
+// Sent from Postman as: localhost:8080/viewOrder?orderID=11
 // Using  r.URL.Query
 func viewOrderHandle(w http.ResponseWriter, r *http.Request) {
 	orderIDStr := r.URL.Query().Get("orderID")
@@ -37,13 +45,7 @@ func viewOrderHandle(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func viewAllOrdersHandle(w http.ResponseWriter, r *http.Request) {
-	for id, item := range orders {
-		fmt.Fprintf(w, "%d is %s\n", id, item)
-	}
-}
-
-// Sent from postman as: localhost:8080/addOrder/11/moloko
+// Sent from Postman as: localhost:8080/addOrder/11/milk
 // Using gorilla mux
 func addOrderHandle(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
