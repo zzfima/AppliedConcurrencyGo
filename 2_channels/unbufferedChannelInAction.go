@@ -1,3 +1,6 @@
+// Unbuffered receiver: accept send ONLY if there appropriate receiver.
+// If no receiver on channel, it will be wait on sending
+
 package main
 
 import (
