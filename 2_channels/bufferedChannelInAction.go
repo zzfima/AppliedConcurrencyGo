@@ -1,5 +1,7 @@
 // Buffered receiver: accept send not matter if there appropriate receiver.
 // If no receiver on channel, it will be do sending and continue
+// An unbuffered channel is used to perform synchronous communication between goroutines,
+// while a buffered channel is used for perform asynchronous communication.
 
 package main
 
