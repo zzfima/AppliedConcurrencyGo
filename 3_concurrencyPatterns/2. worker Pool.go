@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-func main() {
+func mainWorkerPool() {
 	numOfJobs := 5
 	jobs := make(chan int, numOfJobs)
 	results := make(chan int, numOfJobs)
